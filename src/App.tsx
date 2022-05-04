@@ -1,58 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { lazy, Suspense, useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import { THEME_LIGHT, Theme } from './settings/themes'
+// Lazy Loaded Routes
+const CounterView = lazy(() => import('./views/counter'))
+const UsersView = lazy(() => import('./views/users'))
+const HomeView = lazy(() => import('./views/home'))
+const HooksView = lazy(() => import('./views/hooks'))
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+function Loading() {
+	return <p>Loading ...</p>
 }
 
-export default App;
+function App() {
+	const [currentTheme] = useState<Theme>(THEME_LIGHT)
+
+	return (
+		<div className='App'>
+			<ThemeProvider theme={currentTheme}>
+				<ul>
+					<li>
+						<Link to='/'>Counter</Link>
+					</li>
+					<li>
+						<Link to='/users'>Account</Link>
+					</li>
+					<li>
+						<Link to='/hooks'>Hooks</Link>
+					</li>
+				</ul>
+
+				<Suspense fallback={<Loading />}>
+					<Routes>
+						<Route path='/' element={<HomeView />} />
+						<Route path='/counter' element={<CounterView />} />
+						<Route path='/users' element={<UsersView />} />
+						<Route path='/hooks' element={<HooksView />} />
+					</Routes>
+				</Suspense>
+			</ThemeProvider>
+		</div>
+	)
+}
+
+export default App
