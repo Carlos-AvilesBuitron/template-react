@@ -1,41 +1,40 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true
-    },
-    "extends": [
-        "react-app",
-        "react-app/jest",
-        "airbnb",
-        "airbnb-typescript",
-        "plugin:import/typescript",
-        "plugin:prettier/recommended"
-    ], 
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "react",  
-        "@typescript-eslint",
-        "prettier"
-    ],
-    "rules": {
-        "react/react-in-jsx-scope": "off",
-        "no-param-reassign": "off",
-        "react/require-default-props": "off",
-        "testing-library/prefer-screen-queries": "off",
-        "no-console": "off",
-        "import/prefer-default-export": "off",
-        "import/no-cycle":"off",
-        "react/button-has-type":"off",
-        "no-promise-executor-return": "off",
-        "consistent-return":"off"
-    }
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"jest": true
+	},
+	"extends": [
+		"react-app",
+		"react-app/jest",
+		"airbnb",
+		"airbnb-typescript",
+		"plugin:import/typescript",
+		"plugin:prettier/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["react", "@typescript-eslint", "prettier"],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"no-param-reassign": "off",
+		"react/require-default-props": "off",
+		"testing-library/prefer-screen-queries": "off",
+		"no-console": "off",
+		"import/prefer-default-export": "off",
+		"import/no-cycle": "off",
+		"react/button-has-type": "off",
+		"no-promise-executor-return": "off",
+		"consistent-return": "off",
+		"react/jsx-props-no-spreading": "off",
+		"import/no-extraneous-dependencies": "off",
+		"react/function-component-definition": "off"
+	}
 }

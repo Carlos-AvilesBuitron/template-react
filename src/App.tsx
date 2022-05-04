@@ -15,12 +15,27 @@ function Loading() {
 function App() {
 	const [currentTheme] = useState<Theme>(THEME_LIGHT)
 
+	// sample click functions
+	/*
+	const swapTheme = (): void => {
+		
+	}
+
+	const PassData = (e: React.MouseEvent<HTMLButtonElement>, data: any) => {
+		e.preventDefault()
+		return data
+	}
+	*/
+
 	return (
 		<div className='App'>
 			<ThemeProvider theme={currentTheme}>
 				<ul>
 					<li>
-						<Link to='/'>Counter</Link>
+						<Link to='/'>Home</Link>
+					</li>
+					<li>
+						<Link to='/counter'>Counter</Link>
 					</li>
 					<li>
 						<Link to='/users'>Account</Link>
