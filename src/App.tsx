@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { THEME_LIGHT, Theme } from './settings/themes'
 // Lazy Loaded Routes
@@ -29,31 +29,34 @@ function App() {
 
 	return (
 		<div className='App'>
-			<ThemeProvider theme={currentTheme}>
-				<ul>
-					<li>
-						<Link to='/'>Home</Link>
-					</li>
-					<li>
-						<Link to='/counter'>Counter</Link>
-					</li>
-					<li>
-						<Link to='/users'>Account</Link>
-					</li>
-					<li>
-						<Link to='/hooks'>Hooks</Link>
-					</li>
-				</ul>
+			<BrowserRouter>
+				<ThemeProvider theme={currentTheme}>
+					<h1>Welcome to React template.</h1>
+					<ul>
+						<li>
+							<Link to='/'>Home</Link>
+						</li>
+						<li>
+							<Link to='/counter'>Counter</Link>
+						</li>
+						<li>
+							<Link to='/users'>Account</Link>
+						</li>
+						<li>
+							<Link to='/hooks'>Hooks</Link>
+						</li>
+					</ul>
 
-				<Suspense fallback={<Loading />}>
-					<Routes>
-						<Route path='/' element={<HomeView />} />
-						<Route path='/counter' element={<CounterView />} />
-						<Route path='/users' element={<UsersView />} />
-						<Route path='/hooks' element={<HooksView />} />
-					</Routes>
-				</Suspense>
-			</ThemeProvider>
+					<Suspense fallback={<Loading />}>
+						<Routes>
+							<Route path='/' element={<HomeView />} />
+							<Route path='/counter' element={<CounterView />} />
+							<Route path='/users' element={<UsersView />} />
+							<Route path='/hooks' element={<HooksView />} />
+						</Routes>
+					</Suspense>
+				</ThemeProvider>
+			</BrowserRouter>
 		</div>
 	)
 }
